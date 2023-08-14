@@ -16,6 +16,9 @@ import '../../bloc/ThemeBloc/theme_state.dart';
 import '../../dailogs/logout_dailog.dart';
 import '../../util/Theme/app_gradient.dart';
 import '../../util/Theme/app_theme.dart';
+import 'Components/add_new_project_widget.dart';
+import 'Components/add_project_images_and_detail.dart';
+import 'Components/bottom_sheet.dart';
 
 class HomeView extends HookWidget {
   final innerNavigatorKey = GlobalKey<ScaffoldState>();
@@ -36,7 +39,8 @@ class HomeView extends HookWidget {
     // }, []);
     return Scaffold(
       key: innerNavigatorKey,
-      drawer: drawer(context, name),
+      drawer: drawer(context, name,
+          color: isDark.value ? Colors.white : Colors.black),
       body: SafeArea(
         child: Column(
           children: [
@@ -71,7 +75,7 @@ class HomeView extends HookWidget {
                       return GestureDetector(
                         onTap: () {
                           // if (switchInput == null) return;
-    
+
                           // isDark.value = switchInput?.value ?? false;
                           context
                               .read<ThemeBloc>()
@@ -92,14 +96,14 @@ class HomeView extends HookWidget {
                               stateMachineController =
                                   StateMachineController.fromArtboard(
                                       artboard, 'Switch Theme');
-    
+
                               if (stateMachineController == null) return;
                               artboard.addController(stateMachineController!);
                               switchInput =
                                   stateMachineController?.findInput("isDark");
                               final mode =
                                   context.read<ThemeBloc>().state.themeType;
-    
+
                               isDark.value =
                                   mode == appTheme[ThemeType.darkTheme];
                               switchInput?.change(isDark.value);
@@ -130,7 +134,7 @@ class HomeView extends HookWidget {
     );
   }
 
-  Padding drawer(BuildContext context, Object name) {
+  Padding drawer(BuildContext context, Object name, {required Color color}) {
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: MediaQuery.of(context).size.height * 0.2,
@@ -178,8 +182,27 @@ class HomeView extends HookWidget {
                 drawerButton(
                   onTap: () {
                     innerNavigatorKey.currentState?.closeDrawer();
+                    bottomSheet(
+                        context: context,
+                        child: AddNewProject(
+                          color: color,
+                        ));
                   },
                   icon: Ionicons.create_outline,
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.03,
+                ),
+                drawerButton(
+                  onTap: () {
+                    innerNavigatorKey.currentState?.closeDrawer();
+                    bottomSheet(
+                        context: context,
+                        child: AddProjcetImagesAndDetail(
+                          color: color,
+                        ));
+                  },
+                  icon: Ionicons.albums_outline,
                 ),
                 const Spacer(),
                 drawerButton(

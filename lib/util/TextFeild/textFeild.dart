@@ -4,7 +4,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 Widget textField(
     {required TextEditingController controller,
     bool isObsecure = false,
+
     required String hintText,
+    int maxLines = 1,
     required BuildContext context,
     required TextInputType textInputType,
     TextInputAction textInputAction = TextInputAction.next}) {
@@ -18,6 +20,7 @@ Widget textField(
         color: Theme.of(context).indicatorColor,
         borderRadius: BorderRadius.circular(20)),
     child: TextFormField(
+      maxLines: maxLines,
       style: Theme.of(context).textTheme.titleMedium,
       controller: controller,
       cursorColor: Theme.of(context).canvasColor,

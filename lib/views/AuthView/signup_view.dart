@@ -67,212 +67,213 @@ class SignUpView extends HookWidget {
 
     return GradientBox(
       child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              Opacity(
-                  opacity: _animation,
-                  child: loginAppBar(title: "Signup", context: context)),
-              Expanded(
-                child: ListView(
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                    ),
-                    AnimatedBuilder(
-                        animation: _titlecontroller,
-                        builder: (context, child) {
-                          return SlideTransition(
-                            position: AlwaysStoppedAnimation(Offset(
-                              _titleAnimation.value,
-                              0.0,
-                            )),
-                            child: textField(
-                              context: context,
-                              controller: nameController,
-                              hintText: 'Enter Your Name..',
-                              textInputType: TextInputType.text,
-                            ),
-                          );
-                        }),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.02,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        AnimatedBuilder(
+        body: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.04,
+            ),
+            Opacity(
+                opacity: _animation,
+                child: loginAppBar(title: "Signup", context: context)),
+            Expanded(
+              child: ListView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  AnimatedBuilder(
+                      animation: _titlecontroller,
+                      builder: (context, child) {
+                        return SlideTransition(
+                          position: AlwaysStoppedAnimation(Offset(
+                            _titleAnimation.value,
+                            0.0,
+                          )),
+                          child: textField(
+                            context: context,
+                            controller: nameController,
+                            hintText: 'Enter Your Name..',
+                            textInputType: TextInputType.text,
+                          ),
+                        );
+                      }),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AnimatedBuilder(
+                          animation: _titlecontroller,
+                          builder: (context, child) {
+                            return SlideTransition(
+                              position: AlwaysStoppedAnimation(Offset(
+                                -_titleAnimation.value,
+                                0.0,
+                              )),
+                              child: CountryCodePicker(
+                                initialSelection: countryCode.value,
+                                textStyle: TextStyle(
+                                    color: isDark.value
+                                        ? Colors.white
+                                        : Colors.black),
+                                dialogTextStyle: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                    ),
+                                searchStyle: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(
+                                      fontSize: 20,
+                                      color: Colors.black,
+                                    ),
+                                barrierColor: Colors.black26,
+                                boxDecoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.black),
+                                searchDecoration: const InputDecoration(
+                                    focusColor: Colors.black,
+                                    hoverColor: Colors.black,
+                                    border: InputBorder.none,
+                                    fillColor: Colors.white,
+                                    filled: true),
+                                backgroundColor: Colors.black,
+                                onChanged: (value) {
+                                  countryCode.value = value.toString();
+                                },
+                              ),
+                            );
+                          }),
+                      Expanded(
+                        child: AnimatedBuilder(
                             animation: _titlecontroller,
                             builder: (context, child) {
                               return SlideTransition(
                                 position: AlwaysStoppedAnimation(Offset(
-                                  -_titleAnimation.value,
+                                  _titleAnimation.value,
                                   0.0,
                                 )),
-                                child: CountryCodePicker(
-                                  initialSelection: countryCode.value,
-                                  textStyle: TextStyle(
-                                      color: isDark.value
-                                          ? Colors.white
-                                          : Colors.black),
-                                  dialogTextStyle: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                      ),
-                                  searchStyle: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                        fontSize: 20,
-                                        color: Colors.black,
-                                      ),
-                                  barrierColor: Colors.black26,
-                                  boxDecoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.black),
-                                  searchDecoration: const InputDecoration(
-                                      focusColor: Colors.black,
-                                      hoverColor: Colors.black,
-                                      border: InputBorder.none,
-                                      fillColor: Colors.white,
-                                      filled: true),
-                                  backgroundColor: Colors.black,
-                                  onChanged: (value) {
-                                    countryCode.value = value.toString();
-                                  },
+                                child: textField(
+                                  context: context,
+                                  controller: phoneController,
+                                  hintText: 'Enter Your Phone..',
+                                  textInputType: TextInputType.phone,
                                 ),
                               );
                             }),
-                        Expanded(
-                          child: AnimatedBuilder(
-                              animation: _titlecontroller,
-                              builder: (context, child) {
-                                return SlideTransition(
-                                  position: AlwaysStoppedAnimation(Offset(
-                                    _titleAnimation.value,
-                                    0.0,
-                                  )),
-                                  child: textField(
-                                    context: context,
-                                    controller: phoneController,
-                                    hintText: 'Enter Your Phone..',
-                                    textInputType: TextInputType.phone,
-                                  ),
-                                );
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  AnimatedBuilder(
+                      animation: _titlecontroller,
+                      builder: (context, child) {
+                        return SlideTransition(
+                          position: AlwaysStoppedAnimation(
+                              Offset(_titleAnimation.value, 0.0)),
+                          child: textField(
+                            context: context,
+                            controller: emailController,
+                            hintText: 'Enter Your Email..',
+                            textInputType: TextInputType.emailAddress,
+                          ),
+                        );
+                      }),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  AnimatedBuilder(
+                      animation: _titlecontroller,
+                      builder: (context, child) {
+                        return SlideTransition(
+                          position: AlwaysStoppedAnimation(
+                              Offset(-_titleAnimation.value, 0.0)),
+                          child: textField(
+                            context: context,
+                            controller: passwordController,
+                            hintText: 'Enter Your Password..',
+                            textInputType: TextInputType.text,
+                            isObsecure: true,
+                            textInputAction: TextInputAction.done,
+                          ),
+                        );
+                      }),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  AnimatedBuilder(
+                      animation: _logincontroller,
+                      builder: (context, _) {
+                        return SlideTransition(
+                          position: AlwaysStoppedAnimation(
+                              Offset(0.0, _loginAnimation.value)),
+                          child: elevatedButton(
+                              context: context,
+                              title: 'Signup',
+                              onTap: () {
+                                print('Dark ${isDark.value}');
+                                final email = emailController.text;
+                                final password = passwordController.text;
+                                final name = nameController.text;
+                                final phonenumber =
+                                    "${countryCode.value} ${phoneController.text}";
+                                print(email);
+                                context.read<AppBloc>().add(AppEventRegister(
+                                      email: email,
+                                      password: password,
+                                      name: name,
+                                      phoneNumber: phonenumber,
+                                    ));
                               }),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.02,
-                    ),
-                    AnimatedBuilder(
-                        animation: _titlecontroller,
-                        builder: (context, child) {
-                          return SlideTransition(
-                            position: AlwaysStoppedAnimation(
-                                Offset(_titleAnimation.value, 0.0)),
-                            child: textField(
-                              context: context,
-                              controller: emailController,
-                              hintText: 'Enter Your Email..',
-                              textInputType: TextInputType.emailAddress,
-                            ),
-                          );
-                        }),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.02,
-                    ),
-                    AnimatedBuilder(
-                        animation: _titlecontroller,
-                        builder: (context, child) {
-                          return SlideTransition(
-                            position: AlwaysStoppedAnimation(
-                                Offset(-_titleAnimation.value, 0.0)),
-                            child: textField(
-                              context: context,
-                              controller: passwordController,
-                              hintText: 'Enter Your Password..',
-                              textInputType: TextInputType.text,
-                              isObsecure: true,
-                              textInputAction: TextInputAction.done,
-                            ),
-                          );
-                        }),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.02,
-                    ),
-                    AnimatedBuilder(
-                        animation: _logincontroller,
-                        builder: (context, _) {
-                          return SlideTransition(
+                        );
+                      }),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  AnimatedBuilder(
+                      animation: _logincontroller,
+                      builder: (context, _) {
+                        return SlideTransition(
                             position: AlwaysStoppedAnimation(
                                 Offset(0.0, _loginAnimation.value)),
-                            child: elevatedButton(
-                                context: context,
-                                title: 'Signup',
-                                onTap: () {
-                                  print('Dark ${isDark.value}');
-                                  final email = emailController.text;
-                                  final password = passwordController.text;
-                                  final name = nameController.text;
-                                  final phonenumber =
-                                      "${countryCode.value} ${phoneController.text}";
-                                  print(email);
-                                  context.read<AppBloc>().add(AppEventRegister(
-                                        email: email,
-                                        password: password,
-                                        name: name,
-                                        phoneNumber: phonenumber,
-                                      ));
-                                }),
-                          );
-                        }),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                    ),
-                    AnimatedBuilder(
-                        animation: _logincontroller,
-                        builder: (context, _) {
-                          return SlideTransition(
-                              position: AlwaysStoppedAnimation(
-                                  Offset(0.0, _loginAnimation.value)),
-                              child: Center(
-                                child: RichText(
-                                  text: TextSpan(
-                                      text: "Already have account? ",
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
-                                      children: [
-                                        TextSpan(
-                                          recognizer: TapGestureRecognizer()
-                                            ..onTap = () {
-                                              context
-                                                  .read<AppBloc>()
-                                                  .add(const AppEventGoToLogin());
-                                            },
-                                          text: 'Login',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        )
-                                      ]),
-                                ),
-                              ));
-                        }),
-                  ],
-                ),
-              )
-            ],
-          ),
+                            child: Center(
+                              child: RichText(
+                                text: TextSpan(
+                                    text: "Already have account? ",
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
+                                    children: [
+                                      TextSpan(
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            context
+                                                .read<AppBloc>()
+                                                .add(const AppEventGoToLogin());
+                                          },
+                                        text: 'Login',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      )
+                                    ]),
+                              ),
+                            ));
+                      }),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
