@@ -75,13 +75,16 @@ class SignUpView extends HookWidget {
             Opacity(
                 opacity: _animation,
                 child: loginAppBar(title: "Signup", context: context)),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.045,
+            ),
             Expanded(
               child: ListView(
                 physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
+                    height: MediaQuery.of(context).size.height * 0.055,
                   ),
                   AnimatedBuilder(
                       animation: _titlecontroller,

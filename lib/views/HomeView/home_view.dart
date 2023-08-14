@@ -134,7 +134,7 @@ class HomeView extends HookWidget {
     );
   }
 
-  Padding drawer(BuildContext context, Object name, {required Color color}) {
+  Widget drawer(BuildContext context, Object name, {required Color color}) {
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: MediaQuery.of(context).size.height * 0.2,

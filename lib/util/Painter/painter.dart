@@ -135,16 +135,16 @@ class AuthPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Path path_0 = Path();
-    path_0.moveTo(size.width * -0.001482000, size.height * 0.1557860);
+    path_0.moveTo(size.width * 0.001482000, size.height * 0.1557860);
     path_0.lineTo(size.width, size.height * 0.1631700);
     path_0.lineTo(size.width * 1, size.height * 0.628260);
     path_0.cubicTo(
         size.width * 0.5168220,
-        size.height * 0.8345620,
+        size.height * 0,
         size.width * 0.4540680,
-        size.height * 2.1425680,
+        size.height * 3.1425680,
         size.width * -0.0001500000,
-        size.height * 0.2797280);
+        size.height * 0.1797280);
     path_0.lineTo(size.width * -0.001482000, size.height * 0.1557860);
     path_0.close();
 

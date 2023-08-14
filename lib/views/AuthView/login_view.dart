@@ -50,152 +50,160 @@ class LoginView extends HookWidget {
             parent: _signupcontroller, curve: Curves.easeInOutExpo));
 
     _signupcontroller.forward();
-    return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.04,
-          ),
-          Opacity(
-              opacity: _animation,
-              child: loginAppBar(title: "Login", context: context)),
-          Expanded(
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
+    return GradientBox(
+      child: Scaffold(
+        body: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.04,
+            ),
+            Opacity(
+                opacity: _animation,
+                child: loginAppBar(title: "Login", context: context)),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.045,
+            ),
+            Expanded(
+              child: ListView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
                 ),
-                AnimatedBuilder(
-                    animation: _titlecontroller,
-                    builder: (context, child) {
-                      return SlideTransition(
-                        position: AlwaysStoppedAnimation(
-                            Offset(0.0, -_titleAnimation.value)),
-                        // alignment: Alignment.center,
-                        // transform: Matrix4.rotationX(
-                        //     2 * pi * _titlecontroller.value),
-                        child: Center(
-                          child: Text(
-                            "Portfolio",
-                            style: Theme.of(context).textTheme.headlineLarge,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                  ),
+                  AnimatedBuilder(
+                      animation: _titlecontroller,
+                      builder: (context, child) {
+                        return SlideTransition(
+                          position: AlwaysStoppedAnimation(
+                              Offset(0.0, -_titleAnimation.value)),
+                          // alignment: Alignment.center,
+                          // transform: Matrix4.rotationX(
+                          //     2 * pi * _titlecontroller.value),
+                          child: Center(
+                            child: Text(
+                              "Portfolio",
+                              style: Theme.of(context).textTheme.headlineLarge,
+                            ),
                           ),
-                        ),
-                      );
-                    }),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                ),
-                AnimatedBuilder(
-                    animation: _titlecontroller,
-                    builder: (context, child) {
-                      return SlideTransition(
-                        position: AlwaysStoppedAnimation(
-                            Offset(_titleAnimation.value, 0.0)),
-                        child: textField(
-                          context: context,
-                          controller: _emailController,
-                          hintText: 'Enter Your Email..',
-                          textInputType: TextInputType.emailAddress,
-                        ),
-                      );
-                    }),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                AnimatedBuilder(
-                    animation: _titlecontroller,
-                    builder: (context, child) {
-                      return SlideTransition(
-                        position: AlwaysStoppedAnimation(
-                            Offset(-_titleAnimation.value, 0.0)),
-                        child: textField(
-                          context: context,
-                          controller: _passwordController,
-                          hintText: 'Enter Your Password..',
-                          textInputType: TextInputType.text,
-                          isObsecure: true,
-                          textInputAction: TextInputAction.done,
-                        ),
-                      );
-                    }),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                AnimatedBuilder(
-                    animation: _titlecontroller,
-                    builder: (context, _) {
-                      return SlideTransition(
-                        position: AlwaysStoppedAnimation(
-                            Offset(_titleAnimation.value, 0.0)),
-                        child: Align(
-                            alignment: Alignment.centerRight,
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Text(
-                                'Forgot Password?',
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                            )),
-                      );
-                    }),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                AnimatedBuilder(
-                    animation: _signupcontroller,
-                    builder: (context, _) {
-                      return SlideTransition(
-                        position: AlwaysStoppedAnimation(
-                            Offset(0.0, _signupAnimation.value)),
-                        child: elevatedButton(
+                        );
+                      }),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  AnimatedBuilder(
+                      animation: _titlecontroller,
+                      builder: (context, child) {
+                        return SlideTransition(
+                          position: AlwaysStoppedAnimation(
+                              Offset(_titleAnimation.value, 0.0)),
+                          child: textField(
                             context: context,
-                            title: 'Login',
-                            onTap: () {
-                              context.read<AppBloc>().add(
-                                    AppEventLogin(
-                                      email: _emailController.text,
-                                      password: _passwordController.text,
-                                    ),
-                                  );
-                            }),
-                      );
-                    }),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                ),
-                AnimatedBuilder(
-                    animation: _signupcontroller,
-                    builder: (context, _) {
-                      return SlideTransition(
+                            controller: _emailController,
+                            hintText: 'Enter Your Email..',
+                            textInputType: TextInputType.emailAddress,
+                          ),
+                        );
+                      }),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  AnimatedBuilder(
+                      animation: _titlecontroller,
+                      builder: (context, child) {
+                        return SlideTransition(
+                          position: AlwaysStoppedAnimation(
+                              Offset(-_titleAnimation.value, 0.0)),
+                          child: textField(
+                            context: context,
+                            controller: _passwordController,
+                            hintText: 'Enter Your Password..',
+                            textInputType: TextInputType.text,
+                            isObsecure: true,
+                            textInputAction: TextInputAction.done,
+                          ),
+                        );
+                      }),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  AnimatedBuilder(
+                      animation: _titlecontroller,
+                      builder: (context, _) {
+                        return SlideTransition(
+                          position: AlwaysStoppedAnimation(
+                              Offset(_titleAnimation.value, 0.0)),
+                          child: Align(
+                              alignment: Alignment.centerRight,
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Text(
+                                  'Forgot Password?',
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                              )),
+                        );
+                      }),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  AnimatedBuilder(
+                      animation: _signupcontroller,
+                      builder: (context, _) {
+                        return SlideTransition(
                           position: AlwaysStoppedAnimation(
                               Offset(0.0, _signupAnimation.value)),
-                          child: Center(
-                            child: RichText(
-                              text: TextSpan(
-                                  text: "You don't have an account? ",
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                  children: [
-                                    TextSpan(
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          context.read<AppBloc>().add(
-                                              const AppEventGotToRegister());
-                                        },
-                                      text: 'Signup',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                    )
-                                  ]),
-                            ),
-                          ));
-                    }),
-              ],
-            ),
-          )
-        ],
+                          child: elevatedButton(
+                              context: context,
+                              title: 'Login',
+                              onTap: () {
+                                context.read<AppBloc>().add(
+                                      AppEventLogin(
+                                        email: _emailController.text,
+                                        password: _passwordController.text,
+                                      ),
+                                    );
+                              }),
+                        );
+                      }),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  AnimatedBuilder(
+                      animation: _signupcontroller,
+                      builder: (context, _) {
+                        return SlideTransition(
+                            position: AlwaysStoppedAnimation(
+                                Offset(0.0, _signupAnimation.value)),
+                            child: Center(
+                              child: RichText(
+                                text: TextSpan(
+                                    text: "You don't have an account? ",
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall,
+                                    children: [
+                                      TextSpan(
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            context.read<AppBloc>().add(
+                                                const AppEventGotToRegister());
+                                          },
+                                        text: 'Signup',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium,
+                                      )
+                                    ]),
+                              ),
+                            ));
+                      }),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -10,9 +10,10 @@ Widget loginAppBar({required String title, required BuildContext context}) {
       painter: AuthPainter(color: Theme.of(context).canvasColor),
       size: Size(double.infinity, MediaQuery.of(context).size.height * 1),
       child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Center(
-            child: Text(title, style: Theme.of(context).textTheme.titleLarge)),
+        padding: EdgeInsets.only(
+            top: MediaQuery.of(context).size.height * 0.06,
+            left: MediaQuery.of(context).size.width * 0.27),
+        child: Text(title, style: Theme.of(context).textTheme.titleLarge),
       ),
     ),
   );
