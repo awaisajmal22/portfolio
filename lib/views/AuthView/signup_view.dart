@@ -70,7 +70,7 @@ class SignUpView extends HookWidget {
         body: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.04,
+              height: MediaQuery.of(context).size.height * 0.055,
             ),
             Opacity(
                 opacity: _animation,

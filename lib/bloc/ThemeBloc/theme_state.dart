@@ -22,3 +22,7 @@ class LightThemeState extends ThemeState {
 class DarkThemeState extends ThemeState {
   const DarkThemeState({required super.themeType, required super.gradientType});
 }
+
+
+
+

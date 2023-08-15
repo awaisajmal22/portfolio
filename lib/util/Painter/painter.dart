@@ -126,35 +126,3 @@ class RPS2CustomPainter extends CustomPainter {
     return true;
   }
 }
-
-class AuthPainter extends CustomPainter {
-  final Color color;
-  AuthPainter({
-    required this.color,
-  });
-  @override
-  void paint(Canvas canvas, Size size) {
-    Path path_0 = Path();
-    path_0.moveTo(size.width * 0.001482000, size.height * 0.1557860);
-    path_0.lineTo(size.width, size.height * 0.1631700);
-    path_0.lineTo(size.width * 1, size.height * 0.628260);
-    path_0.cubicTo(
-        size.width * 0.5168220,
-        size.height * 0,
-        size.width * 0.4540680,
-        size.height * 3.1425680,
-        size.width * -0.0001500000,
-        size.height * 0.1797280);
-    path_0.lineTo(size.width * -0.001482000, size.height * 0.1557860);
-    path_0.close();
-
-    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.color = color.withOpacity(1.0);
-    canvas.drawPath(path_0, paint_0_fill);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
-}
